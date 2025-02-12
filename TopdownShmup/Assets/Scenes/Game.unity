@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118535744}
   m_Layer: 0
-  m_Name: Props
+  m_Name: Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
