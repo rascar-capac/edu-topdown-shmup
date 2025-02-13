@@ -15,6 +15,15 @@ public class MovementToTargetWithAgent : MonoBehaviour
         _target = target;
     }
 
+    private void CheckUpdateTime()
+    {
+        if (Time.time > _nextUpdateTime)
+        {
+            SetDestinationToTarget();
+            _nextUpdateTime += _destinationUpdatePeriod;
+        }
+    }
+
     private void SetDestinationToTarget()
     {
         if (_target == null)
@@ -35,10 +44,6 @@ public class MovementToTargetWithAgent : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > _nextUpdateTime)
-        {
-            SetDestinationToTarget();
-            _nextUpdateTime += _destinationUpdatePeriod;
-        }
+        CheckUpdateTime();
     }
 }

@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 34031772}
   - component: {fileID: 34031771}
+  - component: {fileID: 34031773}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -239,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 34031770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25, y: 0, z: -25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -247,6 +248,38 @@ Transform:
   - {fileID: 118535744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34031773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34031770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 1479372276
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.23333333
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 7f853472bca6b5c4da70afa7ac5cad8e, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &50082508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -458,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 118535743}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25, y: 0, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -988,6 +1021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167587380}
+  - component: {fileID: 167587381}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -1018,6 +1052,70 @@ Transform:
   - {fileID: 1192046699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167587381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167587379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76671289955920d4caf4101dcf8b8da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabsToSpawn:
+  - prefabToSpawn: {fileID: 6685212139435631616, guid: 712e02e362b19554590d69dd7032c80b, type: 3}
+    probability: 0.8
+  - prefabToSpawn: {fileID: 6253892058535158257, guid: 53571320e84c52842bbd2961eb56f21a, type: 3}
+    probability: 0.2
+  _spawnPeriodCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _minMaxSpawnPeriods: {x: 0.5, y: 5}
+  _timeSpanBetweenStartAndEndInSeconds: 120
+  _positionStrategy: 1
+  _spawnPositions:
+  - {fileID: 1145567771}
+  - {fileID: 1669950079}
+  - {fileID: 859698951}
+  - {fileID: 518131043}
+  - {fileID: 818079089}
+  - {fileID: 261881825}
+  - {fileID: 1902871332}
+  - {fileID: 1192046699}
+  _minSpawnPosition: {x: 0, y: 0, z: 0}
+  _maxSpawnPosition: {x: 0, y: 0, z: 0}
+  _navMeshSurface: {fileID: 0}
+  _circleCenter: {x: 0, y: 0, z: 0}
+  _circleRadius: 0
+  _rotationStrategy: 0
+  _targetedRotation: {fileID: 0}
+  _minSpawnRotation: {x: 0, y: 0, z: 0}
+  _maxSpawnRotation: {x: 0, y: 0, z: 0}
+  _container: {fileID: 1217282913}
+  _startOnAwake: 1
 --- !u!1001 &173902879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8045,7 +8143,7 @@ Transform:
   m_GameObject: {fileID: 2019992623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -25, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
