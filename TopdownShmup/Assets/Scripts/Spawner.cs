@@ -56,7 +56,7 @@ public class Spawner : MonoBehaviour
 
         if (prefabToSpawn == null)
         {
-            Debug.LogError("No spawnable prefab provided. Please fill the prefab list.", this);
+            Debug.LogWarning("No spawnable prefab provided. Please fill the prefab list.", this);
 
             return;
         }
@@ -111,7 +111,7 @@ public class Spawner : MonoBehaviour
 
                 if (_spawnPositions.Count == 0)
                 {
-                    Debug.LogError("No spawn positions provided.", this);
+                    Debug.LogWarning("No spawn positions provided.", this);
 
                     return Vector3.zero;
                 }
@@ -130,7 +130,7 @@ public class Spawner : MonoBehaviour
 
                 if (_navMeshSurface == null)
                 {
-                    Debug.LogError("No NavMeshSurface provided.", this);
+                    Debug.LogWarning("No NavMeshSurface provided.", this);
 
                     return Vector3.zero;
                 }
@@ -149,7 +149,7 @@ public class Spawner : MonoBehaviour
                     return hit.position;
                 }
 
-                Debug.LogError("No position found on NavMeshSurface. Try increasing the max distance.", this);
+                Debug.LogWarning("No position found on NavMeshSurface. Try increasing the max distance.", this);
 
                 return Vector3.zero;
 
@@ -173,7 +173,7 @@ public class Spawner : MonoBehaviour
 
                 if (_targetedRotation == null)
                 {
-                    Debug.LogError("No targeted rotation provided.", this);
+                    Debug.LogWarning("No targeted rotation provided.", this);
 
                     return Quaternion.identity;
                 }

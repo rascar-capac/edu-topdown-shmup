@@ -4,9 +4,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MovementToTargetWithAgent : MonoBehaviour
 {
+    [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Transform _target;
     [SerializeField] private float _destinationUpdatePeriod = 0.1f;
-    [SerializeField] private NavMeshAgent _navMeshAgent;
 
     private float _nextUpdateTime;
 
