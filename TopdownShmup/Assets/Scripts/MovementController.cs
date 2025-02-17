@@ -14,15 +14,15 @@ public class MovementController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        Vector3 movement = _metersPerSecond * Time.deltaTime * new Vector3(_direction.x, 0f, _direction.y);
+        Vector3 movement = _metersPerSecond * new Vector3(_direction.x, 0f, _direction.y);
 
         if (_characterController != null)
         {
-            _characterController.Move(movement);
+            _characterController.SimpleMove(movement);
         }
         else
         {
-            transform.Translate(movement, Space.World);
+            transform.Translate(Time.deltaTime * movement, Space.World);
         }
     }
 
