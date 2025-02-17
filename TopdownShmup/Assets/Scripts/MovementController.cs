@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float _metersPerSecond = 5f;
     [SerializeField] private CharacterController _characterController;
-    [SerializeField] private InputAction _moveAction;
 
     private Vector2 _direction;
 
     private void ReadInput()
     {
-        _direction = _moveAction.ReadValue<Vector2>();
+        _direction = Inputs.MoveInput;
     }
 
     private void ApplyMovement()
@@ -26,16 +24,6 @@ public class MovementController : MonoBehaviour
         {
             transform.Translate(movement, Space.World);
         }
-    }
-
-    private void OnEnable()
-    {
-        _moveAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _moveAction.Disable();
     }
 
     private void Update()
