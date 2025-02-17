@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AimController : MonoBehaviour
+public class TopDownAimController : MonoBehaviour
 {
     [SerializeField] private Transform _targetToRotate;
 
@@ -45,7 +45,7 @@ public class AimController : MonoBehaviour
 
     private void Awake()
     {
-        _camera = Game.Instance.Camera;
+        _camera = Camera.main;
     }
 
     private void Update()
