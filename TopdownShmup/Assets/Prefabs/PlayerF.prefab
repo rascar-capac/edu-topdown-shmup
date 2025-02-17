@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5808938496319185323}
   m_Layer: 0
   m_Name: PlayerF
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _metersPerSecond: 8
   _characterController: {fileID: 4097633007902787139}
-  _hasGravity: 1
 --- !u!143 &4097633007902787139
 CharacterController:
   m_ObjectHideFlags: 0
@@ -134,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338909705821581572}
   - component: {fileID: 7478973938990365426}
+  - component: {fileID: 2625090794837496299}
   m_Layer: 0
   m_Name: Aiming
   m_TagString: Untagged
@@ -169,7 +169,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af887e94af6e7e04d97d2da2c6750266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetToRotate: {fileID: 2256423920190802956}
+  _targetHolder: {fileID: 2625090794837496299}
+--- !u!114 &2625090794837496299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214418379349902834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47143a2dd812d6e4cbd4c142ef49561d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 2256423920190802956}
+  _tag: 
 --- !u!1001 &4244723327598471311
 PrefabInstance:
   m_ObjectHideFlags: 0

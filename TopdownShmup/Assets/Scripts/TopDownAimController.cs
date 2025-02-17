@@ -1,8 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(TargetHolder))]
 public class TopDownAimController : MonoBehaviour
 {
-    [SerializeField] private Transform _targetToRotate;
+    [SerializeField] private TargetHolder _targetHolder;
 
     private Camera _camera;
     private Vector3 _aimDirection;
@@ -39,8 +40,17 @@ public class TopDownAimController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        Transform targetToRotate = _targetToRotate ?? transform;
-        targetToRotate.rotation = Quaternion.LookRotation(_aimDirection);
+        if (_targetHolder.Target == null)
+        {
+            return;
+        }
+
+        _targetHolder.Target.rotation = Quaternion.LookRotation(_aimDirection);
+    }
+
+    private void OnValidate()
+    {
+        _targetHolder = GetComponent<TargetHolder>();
     }
 
     private void Awake()
