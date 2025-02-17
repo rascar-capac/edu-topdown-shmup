@@ -7,14 +7,10 @@ public class EnemyCore : MonoBehaviour
 
     public void Initialize()
     {
-        if (Game.Instance.Player == null)
+        if (Game.Instance.Player != null)
         {
-            Debug.LogWarning("No player referenced in Game", Game.Instance);
-
-            return;
+            _movementToTarget.SetTarget(Game.Instance.Player.transform);
         }
-
-        _movementToTarget.SetTarget(Game.Instance.Player.transform);
     }
 
     private void OnValidate()
