@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public static class Inputs
 {
@@ -9,8 +8,7 @@ public static class Inputs
     public static Vector2 AimTowardsInput => _lastAimTowardsDirection;
     public static Vector2 AimAtInput => InputAsset.Player.AimAt.ReadValue<Vector2>();
     public static bool CurrentAimStrategyIsTowards { get; private set; }
-
-    public static UnityEvent OnFirePressed { get; } = new();
+    public static bool IsFiring => InputAsset.Player.Fire.inProgress;
 
     private static Vector2 _lastAimTowardsDirection;
 
@@ -24,7 +22,6 @@ public static class Inputs
 
     private static void BindEvents()
     {
-        InputAsset.Player.Fire.performed += _ => OnFirePressed.Invoke();
         InputAsset.Player.AimAt.performed += context => CurrentAimStrategyIsTowards = false;
         InputAsset.Player.AimTowards.performed += context =>
         {

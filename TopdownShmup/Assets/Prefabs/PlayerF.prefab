@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3099469118101521138}
   - component: {fileID: 4097633007902787139}
   - component: {fileID: 5808938496319185323}
+  - component: {fileID: 3311117394041293173}
   m_Layer: 0
   m_Name: PlayerF
   m_TagString: Player
@@ -123,6 +124,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &3311117394041293173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874662613593976390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcfd0fdbd0e4bf4cb61560531249ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shooter: {fileID: 7133710331317890945}
 --- !u!1 &9214418379349902834
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,8 +323,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 215211873290934591, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7133710331317890945}
   m_SourcePrefab: {fileID: 100100000, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
+--- !u!198 &823306512863450810 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3902690800800783820, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
+  m_PrefabInstance: {fileID: 4415177393796778870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4591783193855939145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 215211873290934591, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
+  m_PrefabInstance: {fileID: 4415177393796778870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7133710331317890945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591783193855939145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd62719295eecb941ad97b7393fbed87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _muzzleFlash: {fileID: 823306512863450810}
+  _autoShoots: 0
+  _shootingPeriod: 0.3
+  _bulletTrailPrefab: {fileID: 7223319708148292585, guid: 0586d7757c8a3954e9848cb5f9bf30da, type: 3}
+  _trailDuration: 0.1
+  _collisionExplosionPrefab: {fileID: 198146752706458318, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+  _fxContainer: {fileID: 0}
 --- !u!4 &7612793767642607932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
