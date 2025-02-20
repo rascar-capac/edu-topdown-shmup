@@ -17,6 +17,8 @@ public class TargetFollowingWithAngle : MonoBehaviour
     {
         if (_targetHolder.Target == null)
         {
+            Debug.LogWarning("No target provided in the target holder", this);
+
             return;
         }
 
