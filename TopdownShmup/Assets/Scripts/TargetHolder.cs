@@ -13,9 +13,9 @@ public class TargetHolder : MonoBehaviour
     {
         get
         {
-            // lazy initialization: if _target must be fetched with _tag, it only gets initialized when we actually use it.
-            // it removes the overhead from the scene initialization and ensures that the object will be looked for until found
-            if (_actualTarget == null && (string.IsNullOrEmpty(_tag) || !FindTransformWithTag(_tag, out _actualTarget)))
+            // lazy initialization: if the target must be fetched with a tag, it only gets initialized when we actually call Target.
+            // this way, it removes the overhead from the scene initialization and ensures that the object will be looked for until found, without searching for it every frame
+            if (_target == null && (string.IsNullOrEmpty(_tag) || !FindTransformWithTag(_tag, out _actualTarget)))
             {
                 _actualTarget = transform;
             }
