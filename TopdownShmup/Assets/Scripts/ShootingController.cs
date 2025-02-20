@@ -13,7 +13,9 @@ public class ShootingController : MonoBehaviour
     {
         if (_shooter == null)
         {
-            Debug.LogWarning("No shooter provided");
+            Debug.LogWarning("No shooter provided", this);
+
+            return;
         }
 
         if (Inputs.IsFiring)
