@@ -33,11 +33,6 @@ public class AgentMover : AMover
         }
     }
 
-    private void OnValidate()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
-
     private void Update()
     {
         switch (Type)

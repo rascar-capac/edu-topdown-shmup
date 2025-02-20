@@ -20,14 +20,6 @@ public class MovementController : MonoBehaviour
         _mover.SetVelocity(_metersPerSecond * new Vector3(direction.x, 0f, direction.y));
     }
 
-    private void OnValidate()
-    {
-        if (_mover == null)
-        {
-            _mover = GetComponent<AMover>();
-        }
-    }
-
     private void Update()
     {
         CheckInputs();

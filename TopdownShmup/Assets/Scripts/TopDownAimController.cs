@@ -51,16 +51,6 @@ public class TopDownAimController : MonoBehaviour
         _aimer.SetDirection(aimDirection);
     }
 
-    private void OnValidate()
-    {
-        _aimOriginHolder = GetComponent<TargetHolder>();
-
-        if (_aimer == null)
-        {
-            _aimer = GetComponent<Aimer>();
-        }
-    }
-
     private void Awake()
     {
         _camera = Camera.main;

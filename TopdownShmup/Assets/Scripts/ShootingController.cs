@@ -28,14 +28,6 @@ public class ShootingController : MonoBehaviour
         }
     }
 
-    private void OnValidate()
-    {
-        if (_shooter == null)
-        {
-            _shooter = GetComponent<AShooter>();
-        }
-    }
-
     private void Update()
     {
         CheckInputs();

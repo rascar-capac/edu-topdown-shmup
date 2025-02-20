@@ -24,14 +24,6 @@ public class SimpleMover : AMover
         }
     }
 
-    private void OnValidate()
-    {
-        if (_characterController == null)
-        {
-            _characterController = GetComponent<CharacterController>();
-        }
-    }
-
     private void Update()
     {
         UpdateMovement();

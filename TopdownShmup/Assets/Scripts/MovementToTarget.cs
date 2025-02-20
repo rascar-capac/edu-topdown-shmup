@@ -32,16 +32,6 @@ public class MovementToTarget : MonoBehaviour
         _mover.SetDestination(_targetHolder.Target.position, _metersPerSecond);
     }
 
-    private void OnValidate()
-    {
-        _targetHolder = GetComponent<TargetHolder>();
-
-        if (_mover == null)
-        {
-            _mover = GetComponent<AMover>();
-        }
-    }
-
     private void Update()
     {
         MoveToTarget();

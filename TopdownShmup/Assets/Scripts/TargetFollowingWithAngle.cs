@@ -27,11 +27,6 @@ public class TargetFollowingWithAngle : MonoBehaviour
         transform.eulerAngles = new Vector3(_pitchAngle, 0f, 0f);
     }
 
-    private void OnValidate()
-    {
-        _targetHolder = GetComponent<TargetHolder>();
-    }
-
     private void LateUpdate()
     {
         UpdatePosition();
