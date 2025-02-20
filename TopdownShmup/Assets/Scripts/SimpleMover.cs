@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SimpleMover : AMover
 {
+    [Tooltip("Optional")]
+    [SerializeField] private Vector3 _velocity;
     [Tooltip("Leave empty to directly move the transform")]
     [SerializeField] private CharacterController _characterController;
 
@@ -10,7 +12,7 @@ public class SimpleMover : AMover
         Vector3 velocity = Type switch
         {
             EMovementType.Velocity => Velocity,
-            EMovementType.Destination => Speed * (Destination - transform.position).normalized,
+            EMovementType.Destination => MetersPerSecond * (Destination - transform.position).normalized,
             _ => Vector3.zero
         };
 
@@ -22,6 +24,11 @@ public class SimpleMover : AMover
         {
             transform.Translate(Time.deltaTime * velocity, Space.World);
         }
+    }
+
+    private void Awake()
+    {
+        SetVelocity(_velocity);
     }
 
     private void Update()
