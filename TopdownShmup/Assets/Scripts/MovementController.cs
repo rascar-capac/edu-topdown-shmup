@@ -2,33 +2,34 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] private AMover _mover;
     [SerializeField] private float _metersPerSecond = 5f;
-    [SerializeField] private CharacterController _characterController;
 
-    private Vector2 _direction;
-
-    private void ReadInput()
+    private void CheckInputs()
     {
-        _direction = Inputs.MoveInput;
+        if (_mover == null)
+        {
+            Debug.LogWarning("No mover provided", this);
+
+            return;
+        }
+
+        Vector3 direction = Inputs.MoveInput;
+
+        //rename TopDownMovementController or make it more versatile
+        _mover.SetVelocity(_metersPerSecond * new Vector3(direction.x, 0f, direction.y));
     }
 
-    private void ApplyMovement()
+    private void OnValidate()
     {
-        Vector3 movement = _metersPerSecond * new Vector3(_direction.x, 0f, _direction.y);
-
-        if (_characterController != null)
+        if (_mover == null)
         {
-            _characterController.SimpleMove(movement);
-        }
-        else
-        {
-            transform.Translate(Time.deltaTime * movement, Space.World);
+            _mover = GetComponent<AMover>();
         }
     }
 
     private void Update()
     {
-        ReadInput();
-        ApplyMovement();
+        CheckInputs();
     }
 }
