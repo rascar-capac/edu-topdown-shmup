@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "FloatRange", menuName = "Data/FloatRange")]
 public class FloatInRange : ScriptableObject
@@ -6,6 +7,8 @@ public class FloatInRange : ScriptableObject
     [SerializeField] private float _minValue = 0;
     [SerializeField] private float _maxValue = 1;
     [SerializeField] private float _value;
+
+    [SerializeField] private UnityEvent<float, float> _onValueChanged;
 
     private float _initialValue;
 
@@ -16,11 +19,19 @@ public class FloatInRange : ScriptableObject
         get => _value;
         set
         {
+            if (value == _value)
+            {
+                return;
+            }
+
             _value = value;
             ClampValue();
+            _onValueChanged.Invoke(_value, CurrentRatio);
         }
     }
     public float CurrentRatio => Mathf.InverseLerp(_minValue, _maxValue, _value);
+
+    public UnityEvent<float, float> OnValueChanged => _onValueChanged;
 
     private void ClampValue()
     {
@@ -40,6 +51,7 @@ public class FloatInRange : ScriptableObject
     private void OnValidate()
     {
         ClampValue();
+        _onValueChanged.Invoke(_value, CurrentRatio);
     }
 
     private void OnEnable()
