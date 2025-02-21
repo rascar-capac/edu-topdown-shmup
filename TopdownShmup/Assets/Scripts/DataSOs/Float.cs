@@ -6,7 +6,7 @@ public class Float : ScriptableObject
 {
     [SerializeField] private float _value;
 
-    [SerializeField] private UnityEvent<float> _onValueChanged;
+    [SerializeField] private UnityEvent<float> _onValueChanged = new();
 
     private float _initialValue;
 

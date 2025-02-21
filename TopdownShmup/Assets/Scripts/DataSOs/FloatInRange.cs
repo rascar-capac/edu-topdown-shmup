@@ -8,7 +8,7 @@ public class FloatInRange : ScriptableObject
     [SerializeField] private float _maxValue = 1;
     [SerializeField] private float _value;
 
-    [SerializeField] private UnityEvent<float, float> _onValueChanged;
+    [SerializeField] private UnityEvent<float, float> _onValueChanged = new();
 
     private float _initialValue;
 
