@@ -213,8 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5bc4c9ae9a5a468311a8df7ece96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 20
-  _startingRatio: 1
+  _healthRange: {fileID: 11400000, guid: 38ffacc130ff76246bfbf8e4fba62b65, type: 2}
 --- !u!1001 &4244723327598471311
 PrefabInstance:
   m_ObjectHideFlags: 0
