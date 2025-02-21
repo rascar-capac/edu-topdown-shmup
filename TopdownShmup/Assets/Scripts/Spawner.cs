@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Vector3 _maxSpawnRotation;
     [Space]
     [SerializeField] private Transform _container;
-    [SerializeField] private bool _startOnAwake;
+    [SerializeField] private bool _startsOnAwake;
 
     private float _nextSpawnTime;
     private List<GameObject> _spawnedObjects = new();
@@ -223,7 +223,7 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        if (_startOnAwake)
+        if (_startsOnAwake)
         {
             StartSpawn();
         }

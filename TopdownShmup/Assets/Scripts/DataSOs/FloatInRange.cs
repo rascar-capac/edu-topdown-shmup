@@ -27,6 +27,16 @@ public class FloatInRange : ScriptableObject
         _value = Mathf.Clamp(_value, _minValue, _maxValue);
     }
 
+    public FloatInRange Clone()
+    {
+        FloatInRange clone = CreateInstance<FloatInRange>();
+        clone._minValue = _minValue;
+        clone._maxValue = _maxValue;
+        clone._value = _value;
+
+        return clone;
+    }
+
     private void OnValidate()
     {
         ClampValue();

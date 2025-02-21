@@ -1115,7 +1115,7 @@ MonoBehaviour:
   _minSpawnRotation: {x: 0, y: 0, z: 0}
   _maxSpawnRotation: {x: 0, y: 0, z: 0}
   _container: {fileID: 1217282913}
-  _startOnAwake: 1
+  _startsOnAwake: 1
 --- !u!1001 &173902879
 PrefabInstance:
   m_ObjectHideFlags: 0

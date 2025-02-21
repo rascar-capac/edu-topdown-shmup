@@ -3,6 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private FloatInRange _healthRange;
+    [SerializeField] private bool _usesRangeAsClone;
 
     public void Hurt(float damagePercentage)
     {
@@ -37,6 +38,11 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+        if (_usesRangeAsClone)
+        {
+            _healthRange = _healthRange.Clone();
+        }
+
         //update UI
     }
 
