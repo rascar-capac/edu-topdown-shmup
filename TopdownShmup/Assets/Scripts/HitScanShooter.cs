@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(DamageSource))]
 public class HitScanShooter : AShooter
 {
     [SerializeField] private TrailRenderer _bulletTrailPrefab;
@@ -8,6 +9,7 @@ public class HitScanShooter : AShooter
     [SerializeField] private float _trailDuration = 0.2f;
     [SerializeField] private ParticleSystem _collisionExplosionPrefab;
     [SerializeField] private Transform _fxContainer;
+    [SerializeField] private DamageSource _damageSource;
 
     protected override void Shoot()
     {
@@ -15,18 +17,43 @@ public class HitScanShooter : AShooter
         {
             GameObject hitObject = hitInfo.collider.gameObject;
 
-            if (_bulletTrailPrefab != null)
-            {
-                TrailRenderer bulletTrail = Instantiate(_bulletTrailPrefab, transform.position, Quaternion.identity, _fxContainer);
-                StartCoroutine(MoveTrailRoutine(bulletTrail, transform.position, hitInfo.point));
-            }
+            DealDamage(hitObject);
 
-            if (_collisionExplosionPrefab != null)
-            {
-                ParticleSystem collisionExplosion = Instantiate(_collisionExplosionPrefab, hitInfo.point, Quaternion.identity, _fxContainer);
-                collisionExplosion.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
-            }
+            SpawnBulletTrail(hitInfo.point);
+            SpawnCollisionFx(hitInfo);
         }
+    }
+
+    private void DealDamage(GameObject gameObject)
+    {
+        if (_damageSource == null)
+        {
+            Debug.LogWarning("No damage source provided.", this);
+        }
+
+        _damageSource.TryDealDamage(gameObject);
+    }
+
+    private void SpawnBulletTrail(Vector3 hitPoint)
+    {
+        if (_bulletTrailPrefab == null)
+        {
+            return;
+        }
+
+        TrailRenderer bulletTrail = Instantiate(_bulletTrailPrefab, transform.position, Quaternion.identity, _fxContainer);
+        StartCoroutine(MoveTrailRoutine(bulletTrail, transform.position, hitPoint));
+    }
+
+    private void SpawnCollisionFx(RaycastHit hitInfo)
+    {
+        if (_collisionExplosionPrefab == null)
+        {
+            return;
+        }
+
+        ParticleSystem collisionExplosion = Instantiate(_collisionExplosionPrefab, hitInfo.point, Quaternion.identity, _fxContainer);
+        collisionExplosion.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
     }
 
     private IEnumerator MoveTrailRoutine(TrailRenderer trail, Vector3 origin, Vector3 destination)
