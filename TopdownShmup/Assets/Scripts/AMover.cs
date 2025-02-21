@@ -13,10 +13,10 @@ public abstract class AMover : MonoBehaviour
         Type = EMovementType.Velocity;
     }
 
-    public virtual void SetDestination(Vector3 destination, float speed = 1f)
+    public virtual void SetDestination(Vector3 destination, float _metersPerSecond = 1f)
     {
         Destination = destination;
-        MetersPerSecond = speed;
+        MetersPerSecond = _metersPerSecond;
         Type = EMovementType.Destination;
     }
 

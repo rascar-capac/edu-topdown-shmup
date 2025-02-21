@@ -13,14 +13,14 @@ public class AgentMover : AMover
 
     private float _nextUpdateTime;
 
-    public override void SetDestination(Vector3 destination, float speed = 0f)
+    public override void SetDestination(Vector3 destination, float metersPerSecond = 0f)
     {
-        if (speed != 0f)
+        if (metersPerSecond != 0f)
         {
-            _navMeshAgent.speed = speed;
+            _navMeshAgent.speed = metersPerSecond;
         }
 
-        base.SetDestination(destination, speed);
+        base.SetDestination(destination, metersPerSecond);
     }
 
     private void SetDestinationTowardsTarget()
@@ -37,7 +37,7 @@ public class AgentMover : AMover
             return;
         }
 
-        SetDestination(_targetHolder.Target.position, MetersPerSecond);
+        SetDestination(_targetHolder.Target.position, _metersPerSecond);
     }
 
     private void UpdateMovement()
