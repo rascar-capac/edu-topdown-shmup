@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private AMover _mover;
     [SerializeField] private float _metersPerSecond = 5f;
+    [SerializeField] private InputActionReference _moveInput;
 
     private void CheckInputs()
     {
@@ -14,7 +16,14 @@ public class MovementController : MonoBehaviour
             return;
         }
 
-        Vector3 direction = Inputs.MoveInput;
+        if (_moveInput == null)
+        {
+            Debug.LogWarning("No input provided", this);
+
+            return;
+        }
+
+        Vector3 direction = _moveInput.action.ReadValue<Vector2>();
 
         //rename TopDownMovementController or make it more versatile
         _mover.SetVelocity(_metersPerSecond * new Vector3(direction.x, 0f, direction.y));

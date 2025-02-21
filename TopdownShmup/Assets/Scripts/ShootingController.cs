@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShootingController : MonoBehaviour
 {
     [SerializeField] private AShooter _shooter;
+    [SerializeField] private InputActionReference _shootInput;
 
     public void SetShooter(AShooter shooter)
     {
@@ -18,7 +20,14 @@ public class ShootingController : MonoBehaviour
             return;
         }
 
-        if (Inputs.IsFiring)
+        if (_shootInput == null)
+        {
+            Debug.LogWarning("No input provided", this);
+
+            return;
+        }
+
+        if (_shootInput.action.inProgress)
         {
             _shooter.Play();
         }

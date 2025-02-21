@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TargetHolder))]
 public class TopDownAimController : MonoBehaviour
@@ -6,8 +7,41 @@ public class TopDownAimController : MonoBehaviour
     [SerializeField] private Aimer _aimer;
     [Tooltip("This is used to place the raycast plane on the Y axis. It will most likely be a gunpoint.")]
     [SerializeField] private TargetHolder _aimOriginHolder;
+    [SerializeField] private InputActionReference _aimAtInput;
+    [SerializeField] private InputActionReference _aimTowardsInput;
 
     private Camera _camera;
+    private bool _currentAimStrategyIsTowards;
+    private Vector2 _lastAimTowardsDirection;
+    private Vector2 _lastAimAtDirection;
+
+    private void HookInputsToCurrentStrategy()
+    {
+        if (_aimAtInput == null && _aimTowardsInput == null)
+        {
+            Debug.LogWarning("No input provided", this);
+
+            return;
+        }
+
+        if (_aimAtInput != null)
+        {
+            _aimAtInput.action.performed += context =>
+            {
+                _currentAimStrategyIsTowards = false;
+                _lastAimAtDirection = context.ReadValue<Vector2>();
+            };
+        }
+
+        if (_aimTowardsInput != null)
+        {
+            _aimTowardsInput.action.performed += context =>
+            {
+                _currentAimStrategyIsTowards = true;
+                _lastAimTowardsDirection = context.ReadValue<Vector2>();
+            };
+        }
+    }
 
     private void CheckInputs()
     {
@@ -30,15 +64,15 @@ public class TopDownAimController : MonoBehaviour
 
         Vector3 aimDirection = Vector3.zero;
 
-        if (Inputs.CurrentAimStrategyIsTowards)
+        if (_currentAimStrategyIsTowards)
         {
-            Vector2 joystickDirection2D = Inputs.AimTowardsInput;
+            Vector2 joystickDirection2D = _lastAimTowardsDirection;
             aimDirection = new Vector3(joystickDirection2D.x, 0f, joystickDirection2D.y);
         }
         else
         {
             Plane plane = new(Vector3.up, _aimOriginHolder.Target.position);
-            Vector2 mousePosition = Inputs.AimAtInput;
+            Vector2 mousePosition = _lastAimAtDirection;
             Ray ray = _camera.ScreenPointToRay(mousePosition);
 
             if (plane.Raycast(ray, out float distance))
@@ -54,6 +88,7 @@ public class TopDownAimController : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        HookInputsToCurrentStrategy();
     }
 
     private void Update()
