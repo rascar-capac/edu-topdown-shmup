@@ -1,27 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
-    public static Game Instance { get; private set; }
+    [SerializeField] private List<GameEndCondition> _gameEndConditionList;
 
-    [SerializeField] private GameObject _player;
-    [SerializeField] private Camera _camera;
+    [SerializeField] private UnityEvent<bool> _onGameEnded = new();
 
-    public GameObject Player => _player;
-    public Camera Camera => _camera;
+    public UnityEvent<bool> OnGameEnded => _onGameEnded;
+
+    private void EndGame(bool gameIsWon)
+    {
+        OnGameEnded.Invoke(gameIsWon);
+    }
+
+    private void GameEndCondition_OnTrue(bool gameIsWon)
+    {
+        EndGame(gameIsWon);
+    }
 
     private void Awake()
     {
-        Instance = this;
-
-        if (_player == null)
+        foreach (GameEndCondition condition in _gameEndConditionList)
         {
-            Debug.LogWarning("No player provided.", Instance);
-        }
-
-        if (_camera == null)
-        {
-            Debug.LogWarning("No camera provided.", Instance);
+            condition.OnTrue.AddListener(GameEndCondition_OnTrue);
         }
     }
 }

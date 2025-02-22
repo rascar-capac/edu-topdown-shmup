@@ -12,7 +12,7 @@ public class Death : MonoBehaviour
 
     private void TrackingValue_OnValueChanged(float newValue, float ratio)
     {
-        if (ratio == 0)
+        if (ratio == 0f)
         {
             Trigger();
         }

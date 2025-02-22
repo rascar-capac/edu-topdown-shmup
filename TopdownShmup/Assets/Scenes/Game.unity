@@ -2716,6 +2716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460665972}
   - component: {fileID: 460665971}
+  - component: {fileID: 460665973}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2735,8 +2736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7c6a0e771c0ec498879f6289c18194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1790791702}
-  _camera: {fileID: 330585545}
+  _gameEndConditionList:
+  - {fileID: 460665973}
+  _onGameEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &460665972
 Transform:
   m_ObjectHideFlags: 0
@@ -2752,6 +2756,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &460665973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460665970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2883be2ef4113743880074c7c769d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  _playerHealth: {fileID: 11400000, guid: 122ac22a6f5e74244a650ed00c5d63a4, type: 2}
 --- !u!1001 &465285468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7707,11 +7727,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 826979262220549349, guid: 84db3a5382a08eb40a4b30269417de70, type: 3}
   m_PrefabInstance: {fileID: 1776053778}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1790791702 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8874662613593976390, guid: 4d055b51bd2101a40ae5d60ca6d44750, type: 3}
-  m_PrefabInstance: {fileID: 3330175158657793673}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1790791706 stripped
 Transform:
