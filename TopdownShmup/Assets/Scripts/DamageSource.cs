@@ -91,13 +91,18 @@ public class DamageSource : MonoBehaviour
 
     private void CheckProximityDamage()
     {
+        if (!_dealsProximityDamage)
+        {
+            return;
+        }
+
         Collider[] colliders = new Collider[10];
         Physics.OverlapSphereNonAlloc(transform.position, _damageRadius, colliders);
 
         //LINQ request that returns the intersection between the current map and the colliders array,
         //so only the elements whose key is also in the colliders
         _nextProximityDamageTimeMap = _nextProximityDamageTimeMap
-            .Where(time => colliders.Any(collider => collider != null && collider.gameObject == time.Key.gameObject))
+            .Where(time => time.Key != null && colliders.Any(collider => collider != null && collider.gameObject == time.Key.gameObject))
             .ToDictionary(time => time.Key, time => time.Value);
 
         foreach (Collider collider in colliders)
