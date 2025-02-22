@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minValue: 0
   _maxValue: 50
-  _value: 50
+  _initialValue: 50
+  _onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,11 +7,11 @@ public class FloatInRange : ScriptableObject
 {
     [SerializeField] private float _minValue = 0;
     [SerializeField] private float _maxValue = 1;
-    [SerializeField] private float _value;
+    [SerializeField] private float _initialValue;
 
     [SerializeField] private UnityEvent<float, float> _onValueChanged = new();
 
-    private float _initialValue;
+    [NonSerialized] private float _value;
 
     public float MinValue => _minValue;
     public float MaxValue => _maxValue;
@@ -55,11 +56,6 @@ public class FloatInRange : ScriptableObject
     }
 
     private void OnEnable()
-    {
-        _initialValue = _value;
-    }
-
-    private void OnDisable()
     {
         _value = _initialValue;
     }

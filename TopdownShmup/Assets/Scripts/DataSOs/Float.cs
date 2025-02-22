@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Float", menuName = "Data/Float")]
 public class Float : ScriptableObject
 {
-    [SerializeField] private float _value;
+    [SerializeField] private float _initialValue;
 
     [SerializeField] private UnityEvent<float> _onValueChanged = new();
 
-    private float _initialValue;
+    [NonSerialized] private float _value;
 
     public float Value
     {
@@ -33,11 +34,6 @@ public class Float : ScriptableObject
     }
 
     private void OnEnable()
-    {
-        _initialValue = _value;
-    }
-
-    private void OnDisable()
     {
         _value = _initialValue;
     }
