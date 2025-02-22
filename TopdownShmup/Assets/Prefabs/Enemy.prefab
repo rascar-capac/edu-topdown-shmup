@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6722761866864134054}
   - component: {fileID: 1762960715913392384}
   - component: {fileID: 2239574172976281599}
+  - component: {fileID: 2359873428024240949}
   - component: {fileID: 3011320852169932514}
   m_Layer: 0
   m_Name: Enemy
@@ -134,8 +135,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5bc4c9ae9a5a468311a8df7ece96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthRange: {fileID: 11400000, guid: f8e452a7fdb1c7444bb7297392ce502a, type: 2}
+  _data: {fileID: 11400000, guid: f8e452a7fdb1c7444bb7297392ce502a, type: 2}
   _usesRangeAsClone: 1
+--- !u!114 &2359873428024240949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685212139435631616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc707486467935144b0b1c93a970ae8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 2239574172976281599}
 --- !u!136 &3011320852169932514
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -203,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a08f1b4dec2584eaae1e9b3d7d6276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 1
-  _damagePeriod: 1
+  _damageAmount: 5
+  _damagePeriod: 0.2
   _damageableTags:
   - Player
   _dealsProximityDamage: 1

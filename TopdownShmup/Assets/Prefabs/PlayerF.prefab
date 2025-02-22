@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5bc4c9ae9a5a468311a8df7ece96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthRange: {fileID: 11400000, guid: 38ffacc130ff76246bfbf8e4fba62b65, type: 2}
+  _data: {fileID: 11400000, guid: 38ffacc130ff76246bfbf8e4fba62b65, type: 2}
   _usesRangeAsClone: 0
 --- !u!1001 &4244723327598471311
 PrefabInstance:
@@ -396,8 +396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAmount: 10
+  _damagePeriod: 0
   _damageableTags:
   - Enemy
+  _dealsProximityDamage: 0
+  _damageRadius: 0
 --- !u!4 &7612793767642607932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}

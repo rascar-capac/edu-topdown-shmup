@@ -28,9 +28,13 @@ public class Float : ScriptableObject
 
     public UnityEvent<float> OnValueChanged => _onValueChanged;
 
-    private void OnValidate()
+    public Float Clone()
     {
-        _onValueChanged.Invoke(_value);
+        Float clone = CreateInstance<Float>();
+        clone._initialValue = _initialValue;
+        clone._value = _value;
+
+        return clone;
     }
 
     private void OnEnable()

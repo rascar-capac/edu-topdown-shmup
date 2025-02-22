@@ -1,62 +1,70 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "FloatRange", menuName = "Data/FloatRange")]
 public class FloatInRange : ScriptableObject
 {
+    [SerializeField] private Float _current;
     [SerializeField] private float _minValue = 0;
     [SerializeField] private float _maxValue = 1;
-    [SerializeField] private float _initialValue;
 
     [SerializeField] private UnityEvent<float, float> _onValueChanged = new();
-
-    [NonSerialized] private float _value;
 
     public float MinValue => _minValue;
     public float MaxValue => _maxValue;
     public float Value
     {
-        get => _value;
-        set
+        get
         {
-            if (value == _value)
+            if (_current != null)
             {
-                return;
+                return _current.Value;
             }
 
-            _value = value;
-            ClampValue();
-            _onValueChanged.Invoke(_value, CurrentRatio);
+            return 0f;
+        }
+        set
+        {
+            value = Mathf.Clamp(value, _minValue, _maxValue);
+
+            if (_current != null)
+            {
+                _current.Value = value;
+            }
         }
     }
-    public float CurrentRatio => Mathf.InverseLerp(_minValue, _maxValue, _value);
+    public float CurrentRatio => Mathf.InverseLerp(_minValue, _maxValue, _current != null ? _current.Value : 0f);
 
     public UnityEvent<float, float> OnValueChanged => _onValueChanged;
-
-    private void ClampValue()
-    {
-        _value = Mathf.Clamp(_value, _minValue, _maxValue);
-    }
 
     public FloatInRange Clone()
     {
         FloatInRange clone = CreateInstance<FloatInRange>();
         clone._minValue = _minValue;
         clone._maxValue = _maxValue;
-        clone._value = _value;
+
+        if (_current != null)
+        {
+            clone._current = _current.Clone();
+            clone._current.OnValueChanged.AddListener(newValue => clone._onValueChanged.Invoke(newValue, clone.CurrentRatio));
+        }
 
         return clone;
     }
 
-    private void OnValidate()
-    {
-        ClampValue();
-        _onValueChanged.Invoke(_value, CurrentRatio);
-    }
-
     private void OnEnable()
     {
-        _value = _initialValue;
+        if (_current != null)
+        {
+            _current.OnValueChanged.AddListener(newValue => _onValueChanged.Invoke(newValue, CurrentRatio));
+        }
+    }
+
+    private void OnValidate()
+    {
+        if (_current != null)
+        {
+            _current.Value = Mathf.Clamp(_current.Value, _minValue, _maxValue);
+        }
     }
 }

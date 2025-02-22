@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28706f9d33b2a3a45afbf694c2ac2b01, type: 3}
-  m_Name: EnemyHealth
+  m_Script: {fileID: 11500000, guid: b0c22c0f731e76549a1badc9a8afe0d2, type: 3}
+  m_Name: EnemyHealthRange
   m_EditorClassIdentifier: 
-  _initialValue: 50
+  _current: {fileID: 11400000, guid: 22d744ac6c378b645990dd3958ca3251, type: 2}
+  _minValue: 0
+  _maxValue: 50
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
