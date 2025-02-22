@@ -1,13 +1,19 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Health))]
 public class Death : MonoBehaviour
 {
     [SerializeField] private Health _health;
 
+    [SerializeField] private UnityEvent _onTriggered = new();
+
+    public UnityEvent OnTriggered => _onTriggered;
+
     public void Trigger()
     {
         Destroy(gameObject);
+        _onTriggered.Invoke();
     }
 
     private void TrackingValue_OnValueChanged(float newValue, float ratio)

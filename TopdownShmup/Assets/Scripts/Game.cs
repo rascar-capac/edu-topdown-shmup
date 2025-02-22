@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
 
     public void EndGame(bool gameIsWon)
     {
-        OnGameEnded.Invoke(gameIsWon);
+        _onGameEnded.Invoke(gameIsWon);
     }
 
     public void RestartGame()

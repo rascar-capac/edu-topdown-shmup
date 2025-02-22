@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_AgentTypeID
       value: 1479372276
       objectReference: {fileID: 0}
+    - target: {fileID: 2359873428024240949, guid: 712e02e362b19554590d69dd7032c80b, type: 3}
+      propertyPath: _onTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2591575060808606002, guid: 712e02e362b19554590d69dd7032c80b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

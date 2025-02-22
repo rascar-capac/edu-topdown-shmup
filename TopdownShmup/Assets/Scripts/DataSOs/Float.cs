@@ -28,6 +28,11 @@ public class Float : ScriptableObject
 
     public UnityEvent<float> OnValueChanged => _onValueChanged;
 
+    public void Add(float valueToAdd)
+    {
+        Value += valueToAdd;
+    }
+
     public Float Clone()
     {
         Float clone = CreateInstance<Float>();

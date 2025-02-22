@@ -28,7 +28,7 @@ public class HitScanShooter : AShooter
     {
         if (_damageSource == null)
         {
-            Debug.LogWarning("No damage source provided.", this);
+            Debug.LogWarning("No DamageSource provided.", this);
         }
 
         _damageSource.TryDealDamageInstant(gameObject);

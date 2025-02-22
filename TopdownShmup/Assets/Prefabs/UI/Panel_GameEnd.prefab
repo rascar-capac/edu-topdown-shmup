@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 8026969026113282889}
   _scoreText: {fileID: 2423190956337341021}
+  _score: {fileID: 11400000, guid: 03a7305df1d97c543951150e6eb1a548, type: 2}
   _retryButton: {fileID: 3284361547897978362}
   _game: {fileID: 0}
 --- !u!1 &3095832240918348219

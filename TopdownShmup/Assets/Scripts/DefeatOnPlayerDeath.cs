@@ -8,7 +8,7 @@ public class DefeatOnPlayerDeath : GameEndCondition
     {
         if (newValue == 0f)
         {
-            OnTrue.Invoke(false);
+            _onTrue.Invoke(false);
         }
     }
 
