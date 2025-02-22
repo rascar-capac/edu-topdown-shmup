@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -10,9 +11,14 @@ public class Game : MonoBehaviour
 
     public UnityEvent<bool> OnGameEnded => _onGameEnded;
 
-    private void EndGame(bool gameIsWon)
+    public void EndGame(bool gameIsWon)
     {
         OnGameEnded.Invoke(gameIsWon);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void GameEndCondition_OnTrue(bool gameIsWon)

@@ -29,7 +29,7 @@ public class GameEndPanel : MonoBehaviour
 
     private void RetryButton_OnClick()
     {
-        Hide();
+        _game.RestartGame();
     }
 
     private void Awake()
