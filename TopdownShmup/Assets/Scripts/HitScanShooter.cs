@@ -31,7 +31,7 @@ public class HitScanShooter : AShooter
             Debug.LogWarning("No damage source provided.", this);
         }
 
-        _damageSource.TryDealDamage(gameObject);
+        _damageSource.TryDealDamageInstant(gameObject);
     }
 
     private void SpawnBulletTrail(Vector3 hitPoint)
