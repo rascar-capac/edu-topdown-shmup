@@ -225,13 +225,11 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
+        Stop();
+
         if (_startsOnAwake)
         {
             StartSpawn();
-        }
-        else
-        {
-            Stop();
         }
     }
 
