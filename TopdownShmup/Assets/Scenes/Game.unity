@@ -2644,6 +2644,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &416683632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1548293882484413091, guid: 56fe3c27e7fb3e24b94f9afe4f9b73a3, type: 3}
+  m_PrefabInstance: {fileID: 7041797665924886240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &435376462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2754,10 +2759,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 552497139}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_alpha
-        m_Mode: 4
+      - m_Target: {fileID: 416683632}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 122ac22a6f5e74244a650ed00c5d63a4, type: 2}
+        m_TargetAssemblyTypeName: Float, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 03a7305df1d97c543951150e6eb1a548, type: 2}
+        m_TargetAssemblyTypeName: Float, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2781,17 +2810,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 552497139}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_alpha
-        m_Mode: 4
+      - m_Target: {fileID: 416683632}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 552497138}
         m_TargetAssemblyTypeName: GameEndPanel, Assembly-CSharp
@@ -3181,17 +3210,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3924653932204173992, guid: 56fe3c27e7fb3e24b94f9afe4f9b73a3, type: 3}
   m_PrefabInstance: {fileID: 7041797665924886240}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 416683632}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 124bc8fe080534a4cb0f261406bbe4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &552497139 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 8026969026113282889, guid: 56fe3c27e7fb3e24b94f9afe4f9b73a3, type: 3}
-  m_PrefabInstance: {fileID: 7041797665924886240}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &604958162
 PrefabInstance:
   m_ObjectHideFlags: 0
