@@ -6,7 +6,7 @@ public class TopDownAimController : MonoBehaviour
 {
     [SerializeField] private Aimer _aimer;
     [Tooltip("This is used to place the raycast plane on the Y axis. It will most likely be a gunpoint.")]
-    [SerializeField] private TargetHolder _aimOriginHolder;
+    [SerializeField] private TargetHolder _aimYOriginHolder;
     [SerializeField] private InputActionReference _aimAtInput;
     [SerializeField] private InputActionReference _aimTowardsInput;
 
@@ -52,9 +52,9 @@ public class TopDownAimController : MonoBehaviour
             return;
         }
 
-        if (_aimOriginHolder.Target == null)
+        if (_aimYOriginHolder == null || _aimYOriginHolder.Target == null)
         {
-            Debug.LogWarning("No target provided in the aim origin holder", this);
+            Debug.LogWarning("No target provided in the aim Y origin holder", this);
         }
 
         if (_camera == null)
@@ -71,14 +71,15 @@ public class TopDownAimController : MonoBehaviour
         }
         else
         {
-            Plane plane = new(Vector3.up, _aimOriginHolder.Target.position);
+            float aimHeight = _aimYOriginHolder.Target.position.y;
+            Plane plane = new(Vector3.up, -aimHeight);
             Vector2 mousePosition = _lastAimAtDirection;
             Ray ray = _camera.ScreenPointToRay(mousePosition);
 
             if (plane.Raycast(ray, out float distance))
             {
                 Vector3 targetPosition = ray.GetPoint(distance);
-                aimDirection = targetPosition - _aimOriginHolder.Target.position;
+                aimDirection = targetPosition - new Vector3(_aimer.transform.position.x, aimHeight, _aimer.transform.position.z);
             }
         }
 

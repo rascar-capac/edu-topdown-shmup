@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimer: {fileID: 4576204761225483228}
-  _aimOriginHolder: {fileID: 711590086028747373}
+  _aimYOriginHolder: {fileID: 711590086028747373}
   _aimAtInput: {fileID: -5630151704836100654, guid: fb3c9d2a8941c4940af099b3b5ba3974, type: 3}
   _aimTowardsInput: {fileID: 290684575261713742, guid: fb3c9d2a8941c4940af099b3b5ba3974, type: 3}
 --- !u!114 &4576204761225483228

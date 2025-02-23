@@ -5,6 +5,7 @@ public class Aimer : MonoBehaviour
     [Tooltip("Optional")]
     [SerializeField] private TargetHolder _targetHolder;
 
+    public TargetHolder TargetHolder => _targetHolder;
     public Vector3 Direction { get; private set; }
 
     public void SetDirection(Vector3 direction)
