@@ -33,6 +33,11 @@ public class Float : ScriptableObject
         Value += valueToAdd;
     }
 
+    public void Reset()
+    {
+        _value = _initialValue;
+    }
+
     public Float Clone()
     {
         Float clone = CreateInstance<Float>();
@@ -44,6 +49,6 @@ public class Float : ScriptableObject
 
     private void OnEnable()
     {
-        _value = _initialValue;
+        Reset();
     }
 }

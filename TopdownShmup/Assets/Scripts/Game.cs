@@ -7,8 +7,10 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private List<GameEndCondition> _gameEndConditionList;
 
+    [SerializeField] private UnityEvent _onGameStarted = new();
     [SerializeField] private UnityEvent<bool> _onGameEnded = new();
 
+    public UnityEvent OnGameStarted => _onGameStarted;
     public UnityEvent<bool> OnGameEnded => _onGameEnded;
 
     public void EndGame(bool gameIsWon)
@@ -19,6 +21,7 @@ public class Game : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+        _onGameStarted.Invoke();
     }
 
     private void GameEndCondition_OnTrue(bool gameIsWon)
@@ -32,5 +35,7 @@ public class Game : MonoBehaviour
         {
             condition.OnTrue.AddListener(GameEndCondition_OnTrue);
         }
+
+        _onGameStarted.Invoke();
     }
 }

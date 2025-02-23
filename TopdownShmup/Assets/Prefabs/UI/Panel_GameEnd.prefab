@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376592960849829676}
-  - component: {fileID: 8026969026113282889}
   - component: {fileID: 3924653932204173992}
   m_Layer: 5
   m_Name: Panel_GameEnd
@@ -41,18 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &8026969026113282889
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548293882484413091}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &3924653932204173992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,11 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124bc8fe080534a4cb0f261406bbe4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGroup: {fileID: 8026969026113282889}
   _scoreText: {fileID: 2423190956337341021}
   _score: {fileID: 11400000, guid: 03a7305df1d97c543951150e6eb1a548, type: 2}
-  _retryButton: {fileID: 3284361547897978362}
-  _game: {fileID: 0}
 --- !u!1 &3095832240918348219
 GameObject:
   m_ObjectHideFlags: 0
