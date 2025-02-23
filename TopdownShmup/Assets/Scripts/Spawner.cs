@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private bool _startsOnAwake;
 
-    private float _nextSpawnTime;
+    private float _spawnTimer;
     private List<GameObject> _spawnedObjects = new();
     private float _startTime;
 
@@ -41,7 +41,7 @@ public class Spawner : MonoBehaviour
         if (_startTime > Time.time || forceRestart)
         {
             _startTime = Time.time;
-            _nextSpawnTime = _startTime;
+            _spawnTimer = 0f;
         }
     }
 
@@ -72,11 +72,13 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        if (Time.time > _nextSpawnTime)
+        _spawnTimer += Time.deltaTime;
+
+        // we use a while to compensate potentially skipped spawns due to frame drops
+        while (_spawnTimer > GetCurrentSpawnPeriod(currentTime: Time.time - _spawnTimer)) // we actually want the period at the previous spawn time (to know when to spawn next)
         {
             Spawn();
-
-            _nextSpawnTime += GetCurrentSpawnPeriod(currentTime: _nextSpawnTime); // we use _nextSpawnTime instead of Time.time to avoid delays due to frame drops
+            _spawnTimer -= GetCurrentSpawnPeriod(currentTime: Time.time - _spawnTimer);
         }
     }
 

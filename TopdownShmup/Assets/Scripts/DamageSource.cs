@@ -11,8 +11,8 @@ public class DamageSource : MonoBehaviour
     [SerializeField] private bool _dealsProximityDamage;
     [SerializeField] private float _damageRadius = 0;
 
-    private Dictionary<Health, float> _nextDamageTimeMap = new();
-    private Dictionary<Health, float> _nextProximityDamageTimeMap = new();
+    private Dictionary<Health, float> _damageTimerMap = new();
+    private Dictionary<Health, float> _proximityDamageTimerMap = new();
 
     public bool TryDealDamageInstant(GameObject gameObject)
     {
@@ -40,7 +40,7 @@ public class DamageSource : MonoBehaviour
 
         if (GameObjectHasDamageableHealth(gameObject, out Health health))
         {
-            _nextDamageTimeMap.Add(health, 0f);
+            _damageTimerMap.Add(health, 0f);
 
             return true;
         }
@@ -57,7 +57,7 @@ public class DamageSource : MonoBehaviour
 
         if (GameObjectHasDamageableHealth(gameObject, out Health health))
         {
-            _nextDamageTimeMap.Remove(health);
+            _damageTimerMap.Remove(health);
 
             return true;
         }
@@ -79,12 +79,14 @@ public class DamageSource : MonoBehaviour
 
     private void DealDamageOverTime()
     {
-        foreach ((Health health, float nextTime) in _nextDamageTimeMap)
+        foreach (Health health in _damageTimerMap.Keys)
         {
-            if (nextTime < Time.time)
+            _damageTimerMap[health] += Time.deltaTime;
+
+            while (_damageTimerMap[health] > _damagePeriod)
             {
                 DealDamage(health);
-                _nextDamageTimeMap[health] += _damagePeriod;
+                _damageTimerMap[health] -= _damagePeriod;
             }
         }
     }
@@ -101,7 +103,7 @@ public class DamageSource : MonoBehaviour
 
         //LINQ request that returns the intersection between the current map and the colliders array,
         //so only the elements whose key is also in the colliders
-        _nextProximityDamageTimeMap = _nextProximityDamageTimeMap
+        _proximityDamageTimerMap = _proximityDamageTimerMap
             .Where(time => time.Key != null && colliders.Any(collider => collider != null && collider.gameObject == time.Key.gameObject))
             .ToDictionary(time => time.Key, time => time.Value);
 
@@ -117,15 +119,17 @@ public class DamageSource : MonoBehaviour
                 continue;
             }
 
-            if (!_nextProximityDamageTimeMap.ContainsKey(health))
+            if (!_proximityDamageTimerMap.ContainsKey(health))
             {
-                _nextProximityDamageTimeMap.Add(health, Time.time);
+                _proximityDamageTimerMap.Add(health, 0f);
             }
 
-            if (_nextProximityDamageTimeMap[health] <= Time.time)
+            _proximityDamageTimerMap[health] += Time.deltaTime;
+
+            while (_proximityDamageTimerMap[health] > _damagePeriod)
             {
                 DealDamage(health);
-                _nextProximityDamageTimeMap[health] += _damagePeriod;
+                _proximityDamageTimerMap[health] -= _damagePeriod;
             }
         }
     }

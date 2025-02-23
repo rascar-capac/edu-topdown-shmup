@@ -6,7 +6,7 @@ public abstract class AShooter : MonoBehaviour
     [SerializeField] private bool _autoShoots;
     [SerializeField] private float _shootingPeriod = 0.5f;
 
-    private float _nextShootingTime;
+    private float _shootingTimer;
     private bool _isShooting;
 
     public void ShootOnce()
@@ -31,14 +31,13 @@ public abstract class AShooter : MonoBehaviour
             return;
         }
 
-        if (Time.time < _nextShootingTime)
+        _shootingTimer += Time.deltaTime;
+
+        while (_shootingTimer > _shootingPeriod)
         {
-            return;
+            Shoot();
+            _shootingTimer -= _shootingPeriod;
         }
-
-        Shoot();
-
-        _nextShootingTime = Time.time + _shootingPeriod;
     }
 
     protected virtual void Shoot()

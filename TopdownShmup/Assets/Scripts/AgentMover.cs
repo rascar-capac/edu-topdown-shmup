@@ -11,7 +11,7 @@ public class AgentMover : AMover
     [SerializeField] private float _metersPerSecond = 5f;
     [SerializeField] private float _destinationUpdatePeriod = 0.1f;
 
-    private float _nextUpdateTime;
+    private float _updateTimer;
 
     public override void SetDestination(Vector3 destination, float metersPerSecond = 0f)
     {
@@ -47,10 +47,12 @@ public class AgentMover : AMover
 
     private void CheckUpdateTime()
     {
-        if (Time.time > _nextUpdateTime)
+        _updateTimer += Time.deltaTime;
+
+        while (_updateTimer > _destinationUpdatePeriod)
         {
             _navMeshAgent.SetDestination(Destination);
-            _nextUpdateTime += _destinationUpdatePeriod;
+            _updateTimer -= _destinationUpdatePeriod;
         }
     }
 
