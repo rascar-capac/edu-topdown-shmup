@@ -7,17 +7,7 @@ public class WallTransparencyUpdater : MonoBehaviour
 
     private List<Material> _wallMaterials = new();
 
-    private void Awake()
-    {
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer renderer in renderers)
-        {
-            _wallMaterials.Add(renderer.material);
-        }
-    }
-
-    private void Update()
+    private void UpdatePlayerPosition()
     {
         if (_player == null)
         {
@@ -28,5 +18,25 @@ public class WallTransparencyUpdater : MonoBehaviour
         {
             material.SetVector("_PlayerPosition", _player.position);
         }
+    }
+
+    private void Awake()
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            _wallMaterials.Add(renderer.material);
+        }
+
+        if (_player == null)
+        {
+            Debug.LogWarning("No player provided.", this);
+        }
+    }
+
+    private void Update()
+    {
+        UpdatePlayerPosition();
     }
 }

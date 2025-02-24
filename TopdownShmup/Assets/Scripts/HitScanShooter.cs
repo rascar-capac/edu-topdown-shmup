@@ -4,9 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(DamageSource))]
 public class HitScanShooter : AShooter
 {
+    [Tooltip("Optional")]
     [SerializeField] private TrailRenderer _bulletTrailPrefab;
     // since we shoot in hitscan, we don't want to target a specific speed, but rather a specific (short) duration
     [SerializeField] private float _trailDuration = 0.2f;
+    [Tooltip("Optional")]
     [SerializeField] private ParticleSystem _collisionExplosionPrefab;
     [SerializeField] private Transform _fxContainer;
     [SerializeField] private DamageSource _damageSource;

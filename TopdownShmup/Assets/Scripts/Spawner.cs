@@ -56,8 +56,6 @@ public class Spawner : MonoBehaviour
 
         if (prefabToSpawn == null)
         {
-            Debug.LogWarning("No spawnable prefab provided. Please fill the prefab list.", this);
-
             return;
         }
 
@@ -225,6 +223,11 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
+        if (_prefabsToSpawn.Count == 0)
+        {
+            Debug.LogWarning("No spawnable prefab provided. Please fill the prefab list.", this);
+        }
+
         Stop();
 
         if (_startsOnAwake)

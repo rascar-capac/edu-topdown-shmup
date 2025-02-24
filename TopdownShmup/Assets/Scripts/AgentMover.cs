@@ -27,7 +27,6 @@ public class AgentMover : AMover
     {
         if (_targetHolder.Target == null)
         {
-
             return;
         }
 

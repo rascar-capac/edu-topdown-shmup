@@ -18,7 +18,7 @@ public class Destruction : MonoBehaviour
     {
         if (_targetHolder.Target == null)
         {
-            Debug.Log("No target provided.", this);
+            Debug.LogWarning("No target provided.", this);
 
             yield break;
         }
