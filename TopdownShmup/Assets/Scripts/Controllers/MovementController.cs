@@ -29,12 +29,12 @@ public class MovementController : MonoBehaviour
     {
         if (_mover == null)
         {
-            Debug.LogWarning("No mover provided", this);
+            Debug.LogWarning("No mover provided.", this);
         }
 
         if (_moveInput == null)
         {
-            Debug.LogWarning("No input provided", this);
+            Debug.LogWarning("No input provided.", this);
         }
     }
 

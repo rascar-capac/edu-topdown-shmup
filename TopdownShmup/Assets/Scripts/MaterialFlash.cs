@@ -40,7 +40,7 @@ public class MaterialFlash : MonoBehaviour
     {
         if (_renderer == null)
         {
-            Debug.LogWarning("No renderer provided.");
+            Debug.LogWarning("No renderer provided.", this);
         }
         else
         {

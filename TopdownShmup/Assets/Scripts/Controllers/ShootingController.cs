@@ -32,12 +32,12 @@ public class ShootingController : MonoBehaviour
     {
         if (_shooter == null)
         {
-            Debug.LogWarning("No shooter provided", this);
+            Debug.LogWarning("No shooter provided.", this);
         }
 
         if (_shootInput == null)
         {
-            Debug.LogWarning("No input provided", this);
+            Debug.LogWarning("No input provided.", this);
         }
     }
 
