@@ -24,6 +24,15 @@ public class SimpleMover : AMover
         {
             transform.Translate(Time.deltaTime * velocity, Space.World);
         }
+
+        if (velocity == Vector3.zero)
+        {
+            _onMovementStopped.Invoke();
+        }
+        else
+        {
+            _onMovementStarted.Invoke();
+        }
     }
 
     private void Awake()

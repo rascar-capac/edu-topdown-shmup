@@ -100,6 +100,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dc9b2cec3adaa44bc385f0dd7d4226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onMovementStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4304374072467322567}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: start_running
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onMovementStopped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4304374072467322567}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: stop_running
+          m_BoolArgument: 0
+        m_CallState: 2
   _velocity: {x: 0, y: 0, z: 0}
   _characterController: {fileID: 4097633007902787139}
 --- !u!143 &4097633007902787139
@@ -278,6 +308,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fdb75c2853994f84d92b44dacb2e3130, type: 2}
+    - target: {fileID: 95837873105985096, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c19c8f9507fa2a54b95a5ee996060ca8, type: 2}
+    - target: {fileID: 95837873105985096, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 137693463583622910, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -325,6 +363,11 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 137693463583622910, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
   m_PrefabInstance: {fileID: 4244723327598471311}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &4304374072467322567 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95837873105985096, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
+  m_PrefabInstance: {fileID: 4244723327598471311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4415177393796778870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,11 +386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.221
+      value: 1.303
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.704
+      value: 0.251
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalRotation.w
@@ -355,15 +398,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6116961325465909834, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

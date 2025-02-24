@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: _onHurt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MaterialFlash, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7724813836829890665, guid: 4d055b51bd2101a40ae5d60ca6d44750, type: 3}
+      propertyPath: _onMovementStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724813836829890665, guid: 4d055b51bd2101a40ae5d60ca6d44750, type: 3}
+      propertyPath: _onMovementStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8874662613593976390, guid: 4d055b51bd2101a40ae5d60ca6d44750, type: 3}
       propertyPath: m_Name
       value: PlayerM
@@ -134,6 +142,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fdb75c2853994f84d92b44dacb2e3130, type: 2}
+    - target: {fileID: 95412404844493912, guid: 1617cfd7d856042459cec623d111378d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c19c8f9507fa2a54b95a5ee996060ca8, type: 2}
     - target: {fileID: 137306559579795084, guid: 1617cfd7d856042459cec623d111378d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

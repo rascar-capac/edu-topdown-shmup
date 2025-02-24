@@ -89,5 +89,14 @@ public class AgentMover : AMover
 
                 break;
         }
+
+        if (_navMeshAgent.velocity == Vector3.zero)
+        {
+            _onMovementStopped.Invoke();
+        }
+        else
+        {
+            _onMovementStarted.Invoke();
+        }
     }
 }
