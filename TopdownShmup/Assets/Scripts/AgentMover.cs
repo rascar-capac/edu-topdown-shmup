@@ -25,14 +25,8 @@ public class AgentMover : AMover
 
     private void SetDestinationTowardsTarget()
     {
-        if (_targetHolder == null)
-        {
-            return;
-        }
-
         if (_targetHolder.Target == null)
         {
-            Debug.LogWarning("No target provided in the TargetHolder", this);
 
             return;
         }

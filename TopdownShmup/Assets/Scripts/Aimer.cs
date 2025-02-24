@@ -15,7 +15,7 @@ public class Aimer : MonoBehaviour
 
     private void UpdateDirectionToTarget()
     {
-        if (_targetHolder == null || _targetHolder.Target == null)
+        if (_targetHolder.Target == null)
         {
             return;
         }

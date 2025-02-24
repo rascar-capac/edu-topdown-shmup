@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TargetHolder))]
 public class TopDownAimController : MonoBehaviour
 {
     [SerializeField] private Aimer _aimer;
@@ -17,13 +16,6 @@ public class TopDownAimController : MonoBehaviour
 
     private void HookInputsToCurrentStrategy()
     {
-        if (_aimAtInput == null && _aimTowardsInput == null)
-        {
-            Debug.LogWarning("No input provided", this);
-
-            return;
-        }
-
         if (_aimAtInput != null)
         {
             _aimAtInput.action.performed += context =>
@@ -47,14 +39,14 @@ public class TopDownAimController : MonoBehaviour
     {
         if (_aimer == null)
         {
-            Debug.LogWarning("No aimer provided", this);
-
             return;
         }
 
-        if (_aimYOriginHolder == null || _aimYOriginHolder.Target == null)
+        if (_aimYOriginHolder.Target == null)
         {
-            Debug.LogWarning("No target provided in the aim Y origin holder", this);
+            Debug.LogWarning("No aim Y origin provided.", this);
+
+            return;
         }
 
         if (_camera == null)
@@ -89,6 +81,17 @@ public class TopDownAimController : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+
+        if (_aimer == null)
+        {
+            Debug.LogWarning("No aimer provided.", this);
+        }
+
+        if (_aimAtInput == null && _aimTowardsInput == null)
+        {
+            Debug.LogWarning("No input provided.", this);
+        }
+
         HookInputsToCurrentStrategy();
     }
 

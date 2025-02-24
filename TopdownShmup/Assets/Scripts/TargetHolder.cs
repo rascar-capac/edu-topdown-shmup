@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetHolder : MonoBehaviour
+[Serializable]
+public struct TargetHolder
 {
     [Tooltip("The target defaults to this object's transform.")]
     [SerializeField] private Transform _target;
@@ -14,18 +16,20 @@ public class TargetHolder : MonoBehaviour
     {
         get
         {
-            // lazy initialization: if the target must be fetched with a tag, it only gets initialized when we actually call Target.
-            // this way, it removes the overhead from the scene initialization and ensures that the object will be looked for until found, without searching for it every frame
-            if (_target == null && !TryFindTransformWithAnyTag(_tagList, out _actualTarget))
+            if (_target == null)
             {
-                _actualTarget = transform;
+                TryFindTransformWithAnyTag(_tagList, out _actualTarget);
+            }
+            else
+            {
+                _actualTarget = _target;
             }
 
             return _actualTarget;
         }
         set
         {
-            _actualTarget = value;
+            _target = value;
         }
     }
 
@@ -97,10 +101,5 @@ public class TargetHolder : MonoBehaviour
         transform = null;
 
         return false;
-    }
-
-    private void OnValidate()
-    {
-        _actualTarget = _target;
     }
 }

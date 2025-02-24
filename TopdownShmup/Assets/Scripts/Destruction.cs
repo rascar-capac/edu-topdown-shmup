@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(TargetHolder))]
 public class Destruction : MonoBehaviour
 {
     [SerializeField] private TargetHolder _targetHolder;
@@ -17,8 +16,10 @@ public class Destruction : MonoBehaviour
 
     private IEnumerator AutoDestructCoroutine()
     {
-        if (_targetHolder == null || _targetHolder.Target == null)
+        if (_targetHolder.Target == null)
         {
+            Debug.Log("No target provided.", this);
+
             yield break;
         }
 

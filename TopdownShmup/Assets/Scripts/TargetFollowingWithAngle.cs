@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-[RequireComponent(typeof(TargetHolder))]
 public class TargetFollowingWithAngle : MonoBehaviour
 {
     [SerializeField] private TargetHolder _targetHolder;
@@ -17,8 +16,6 @@ public class TargetFollowingWithAngle : MonoBehaviour
     {
         if (_targetHolder.Target == null)
         {
-            Debug.LogWarning("No target provided in the TargetHolder", this);
-
             return;
         }
 
@@ -30,5 +27,13 @@ public class TargetFollowingWithAngle : MonoBehaviour
     private void LateUpdate()
     {
         UpdatePosition();
+    }
+
+    private void OnValidate()
+    {
+        if (_targetHolder.Target == null)
+        {
+            Debug.LogWarning("No target provided.", this);
+        }
     }
 }
