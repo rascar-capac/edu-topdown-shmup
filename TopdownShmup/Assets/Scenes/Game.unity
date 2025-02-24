@@ -1301,9 +1301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   _prefabsToSpawn:
   - prefabToSpawn: {fileID: 6685212139435631616, guid: 712e02e362b19554590d69dd7032c80b, type: 3}
-    probability: 0.8
-  - prefabToSpawn: {fileID: 6253892058535158257, guid: 53571320e84c52842bbd2961eb56f21a, type: 3}
-    probability: 0.2
+    probability: 1
   _spawnPeriodCurve:
     serializedVersion: 2
     m_Curve:
