@@ -8,9 +8,22 @@ public class GameEndPanel : MonoBehaviour
 
     public void SetScoreText()
     {
-        if (_scoreText != null)
+        if (_scoreText != null && _score != null)
         {
             _scoreText.text = $"score: {_score.Value}";
+        }
+    }
+
+    private void Awake()
+    {
+        if (_scoreText == null)
+        {
+            Debug.LogWarning("No score text provided", this);
+        }
+
+        if (_score == null)
+        {
+            Debug.LogWarning("No score provided", this);
         }
     }
 }
