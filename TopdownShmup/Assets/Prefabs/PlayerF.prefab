@@ -232,8 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5bc4c9ae9a5a468311a8df7ece96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 38ffacc130ff76246bfbf8e4fba62b65, type: 2}
-  _usesRangeAsClone: 0
+  _healthAsset: {fileID: 11400000, guid: 38ffacc130ff76246bfbf8e4fba62b65, type: 2}
+  _initialHealth: 0
+  _minHealth: 0
+  _maxHealth: 0
   _onHurt:
     m_PersistentCalls:
       m_Calls:
@@ -250,6 +252,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _onHealed:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMinReached:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &4244723327598471311

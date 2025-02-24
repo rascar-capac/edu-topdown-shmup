@@ -154,8 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5bc4c9ae9a5a468311a8df7ece96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: f8e452a7fdb1c7444bb7297392ce502a, type: 2}
-  _usesRangeAsClone: 1
+  _healthAsset: {fileID: 0}
+  _initialHealth: 50
+  _minHealth: 0
+  _maxHealth: 50
   _onHurt:
     m_PersistentCalls:
       m_Calls:
@@ -174,6 +176,21 @@ MonoBehaviour:
   _onHealed:
     m_PersistentCalls:
       m_Calls: []
+  _onMinReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2359873428024240949}
+        m_TargetAssemblyTypeName: Death, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2359873428024240949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc707486467935144b0b1c93a970ae8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 2239574172976281599}
   _onTriggered:
     m_PersistentCalls:
       m_Calls:
