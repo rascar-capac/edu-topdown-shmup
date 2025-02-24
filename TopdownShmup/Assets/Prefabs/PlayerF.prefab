@@ -436,11 +436,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5288063653997146942}
   m_SourcePrefab: {fileID: 100100000, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
---- !u!198 &823306512863450810 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3902690800800783820, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
-  m_PrefabInstance: {fileID: 4415177393796778870}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4591783193855939145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 215211873290934591, guid: 5dbabde000f61b24e9b629e5fbe38506, type: 3}
@@ -458,12 +453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd62719295eecb941ad97b7393fbed87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _muzzleFlash: {fileID: 823306512863450810}
+  _muzzleFlash: {fileID: 0}
   _autoShoots: 0
   _shootingPeriod: 0.3
-  _bulletTrailPrefab: {fileID: 7223319708148292585, guid: 0586d7757c8a3954e9848cb5f9bf30da, type: 3}
-  _trailDuration: 0.05
-  _collisionExplosionPrefab: {fileID: 198146752706458318, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+  _bulletTrailPrefab: {fileID: 0}
+  _trailDuration: 0
+  _collisionExplosionPrefab: {fileID: 0}
   _fxContainer: {fileID: 0}
   _damageSource: {fileID: 5288063653997146942}
 --- !u!114 &5288063653997146942

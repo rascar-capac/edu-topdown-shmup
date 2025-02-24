@@ -23,6 +23,8 @@ public class HitScanShooter : AShooter
 
             SpawnBulletTrail(hitInfo.point);
             SpawnCollisionFx(hitInfo);
+
+            Debug.DrawLine(transform.position, hitInfo.point, Color.red, 0.1f);
         }
     }
 
