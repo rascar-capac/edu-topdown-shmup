@@ -70,13 +70,12 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        _spawnTimer += Time.deltaTime;
+        _spawnTimer -= Time.deltaTime;
 
-        // we use a while to compensate potentially skipped spawns due to frame drops
-        while (_spawnTimer > GetCurrentSpawnPeriod(currentTime: Time.time - _spawnTimer)) // we actually want the period at the previous spawn time (to know when to spawn next)
+        while (_spawnTimer < 0f)
         {
             Spawn();
-            _spawnTimer -= GetCurrentSpawnPeriod(currentTime: Time.time - _spawnTimer);
+            _spawnTimer += GetCurrentSpawnPeriod(currentTime: Time.time + _spawnTimer); // we actually want the period corresponding to the time at which the timer would have been equal to zero
         }
     }
 

@@ -26,17 +26,19 @@ public abstract class AShooter : MonoBehaviour
 
     private void CheckShooting()
     {
+        _shootingTimer -= Time.deltaTime;
+
         if (!_isShooting)
         {
+            _shootingTimer = Mathf.Max(0f, _shootingTimer);
+
             return;
         }
 
-        _shootingTimer += Time.deltaTime;
-
-        while (_shootingTimer > _shootingPeriod)
+        while (_shootingTimer < 0f)
         {
             Shoot();
-            _shootingTimer -= _shootingPeriod;
+            _shootingTimer += _shootingPeriod;
         }
     }
 
@@ -53,7 +55,7 @@ public abstract class AShooter : MonoBehaviour
         CheckShooting();
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (_autoShoots)
         {

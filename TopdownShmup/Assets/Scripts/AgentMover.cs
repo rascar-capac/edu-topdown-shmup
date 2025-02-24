@@ -50,12 +50,12 @@ public class AgentMover : AMover
             return;
         }
 
-        _updateTimer += Time.deltaTime;
+        _updateTimer -= Time.deltaTime;
 
-        while (_updateTimer > _destinationUpdatePeriod)
+        while (_updateTimer < 0f)
         {
             _navMeshAgent.SetDestination(Destination);
-            _updateTimer -= _destinationUpdatePeriod;
+            _updateTimer += _destinationUpdatePeriod;
         }
     }
 

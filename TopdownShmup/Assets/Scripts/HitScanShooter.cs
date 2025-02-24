@@ -73,8 +73,10 @@ public class HitScanShooter : AShooter
         trail.transform.position = destination;
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         if (_damageSource == null)
         {
             Debug.LogWarning("No DamageSource provided.", this);

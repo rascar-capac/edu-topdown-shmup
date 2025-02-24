@@ -81,12 +81,13 @@ public class DamageSource : MonoBehaviour
     {
         foreach (Health health in _damageTimerMap.Keys)
         {
-            _damageTimerMap[health] += Time.deltaTime;
+            _damageTimerMap[health] -= Time.deltaTime;
 
-            while (_damageTimerMap[health] > _damagePeriod)
+            // we use a while to compensate potentially skipped spawns due to frame drops
+            while (_damageTimerMap[health] < 0f)
             {
                 DealDamage(health);
-                _damageTimerMap[health] -= _damagePeriod;
+                _damageTimerMap[health] += _damagePeriod;
             }
         }
     }
@@ -124,12 +125,12 @@ public class DamageSource : MonoBehaviour
                 _proximityDamageTimerMap.Add(health, 0f);
             }
 
-            _proximityDamageTimerMap[health] += Time.deltaTime;
+            _proximityDamageTimerMap[health] -= Time.deltaTime;
 
-            while (_proximityDamageTimerMap[health] > _damagePeriod)
+            while (_proximityDamageTimerMap[health] < 0f)
             {
                 DealDamage(health);
-                _proximityDamageTimerMap[health] -= _damagePeriod;
+                _proximityDamageTimerMap[health] += _damagePeriod;
             }
         }
     }
