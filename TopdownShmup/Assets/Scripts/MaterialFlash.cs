@@ -38,7 +38,15 @@ public class MaterialFlash : MonoBehaviour
 
     private void Awake()
     {
-        _initialColor = _renderer.material.color;
+        if (_renderer == null)
+        {
+            Debug.LogWarning("No renderer provided.");
+        }
+        else
+        {
+            _initialColor = _renderer.material.color;
+        }
+
         _wait = new WaitForSeconds(_duration);
     }
 }

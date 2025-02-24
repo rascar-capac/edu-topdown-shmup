@@ -28,7 +28,7 @@ public class HitScanShooter : AShooter
     {
         if (_damageSource == null)
         {
-            Debug.LogWarning("No DamageSource provided.", this);
+            return;
         }
 
         _damageSource.TryDealDamageInstant(gameObject);
@@ -69,5 +69,13 @@ public class HitScanShooter : AShooter
         }
 
         trail.transform.position = destination;
+    }
+
+    private void Awake()
+    {
+        if (_damageSource == null)
+        {
+            Debug.LogWarning("No DamageSource provided.", this);
+        }
     }
 }

@@ -26,6 +26,13 @@ public class Death : MonoBehaviour
 
     private void Awake()
     {
+        if (_health == null)
+        {
+            Debug.LogWarning("No Health provided.", this);
+
+            return;
+        }
+
         if (_health.Data != null)
         {
             _health.Data.OnValueChanged.AddListener(TrackingValue_OnValueChanged);

@@ -15,7 +15,7 @@ public class AgentMover : AMover
 
     public override void SetDestination(Vector3 destination, float metersPerSecond = 0f)
     {
-        if (metersPerSecond != 0f)
+        if (_navMeshAgent != null && metersPerSecond != 0f)
         {
             _navMeshAgent.speed = metersPerSecond;
         }
@@ -36,17 +36,35 @@ public class AgentMover : AMover
 
     private void UpdateMovement()
     {
+        if (_navMeshAgent == null)
+        {
+            return;
+        }
+
         _navMeshAgent.velocity = Velocity;
     }
 
     private void CheckUpdateTime()
     {
+        if (_navMeshAgent == null)
+        {
+            return;
+        }
+
         _updateTimer += Time.deltaTime;
 
         while (_updateTimer > _destinationUpdatePeriod)
         {
             _navMeshAgent.SetDestination(Destination);
             _updateTimer -= _destinationUpdatePeriod;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_navMeshAgent == null)
+        {
+            Debug.LogWarning("No NavMeshAgent provided.", this);
         }
     }
 
