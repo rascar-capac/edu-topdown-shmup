@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DamageSource : MonoBehaviour
 {
+    private const float MIN_DAMAGE_PERIOD = 0.01f;
+
     [SerializeField] private float _damageAmount = 1f;
     [SerializeField] private float _damagePeriod = 0f;
     [SerializeField] private List<string> _damageableTags;
@@ -139,6 +141,12 @@ public class DamageSource : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, _damageRadius);
+    }
+
+
+    private void OnValidate()
+    {
+        _damagePeriod = Mathf.Max(MIN_DAMAGE_PERIOD, _damagePeriod);
     }
 
     private void Update()

@@ -4,6 +4,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentMover : AMover
 {
+    private const float MIN_DESTINATION_UPDATE_PERIOD = 0.01f;
+
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [Tooltip("Optional")]
     [SerializeField] private TargetHolder _targetHolder;
@@ -57,6 +59,11 @@ public class AgentMover : AMover
             _navMeshAgent.SetDestination(Destination);
             _updateTimer += _destinationUpdatePeriod;
         }
+    }
+
+    private void OnValidate()
+    {
+        _destinationUpdatePeriod = Mathf.Max(MIN_DESTINATION_UPDATE_PERIOD, _destinationUpdatePeriod);
     }
 
     private void Awake()

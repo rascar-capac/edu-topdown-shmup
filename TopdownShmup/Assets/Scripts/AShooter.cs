@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class AShooter : MonoBehaviour
 {
+    private const float MIN_SHOOTING_PERIOD = 0.01f;
+
     [SerializeField] private ParticleSystem _muzzleFlash;
     [SerializeField] private bool _autoShoots;
     [SerializeField] private float _shootingPeriod = 0.5f;
@@ -50,9 +52,9 @@ public abstract class AShooter : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnValidate()
     {
-        CheckShooting();
+        _shootingPeriod = Mathf.Max(MIN_SHOOTING_PERIOD, _shootingPeriod);
     }
 
     protected virtual void Awake()
@@ -61,5 +63,10 @@ public abstract class AShooter : MonoBehaviour
         {
             Play();
         }
+    }
+
+    private void Update()
+    {
+        CheckShooting();
     }
 }

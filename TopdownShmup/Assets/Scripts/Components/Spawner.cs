@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+    private const float MIN_SPAWN_PERIOD = 0.05f;
+
     [Tooltip("The sum of probabilities should equal 1.")]
     [SerializeField] private List<SpawnProbabilityInfo> _prefabsToSpawn;
     [Tooltip("Normalized spawn period fluctuation. Keep this between 0 and 1 on both axes.")]
@@ -218,6 +220,12 @@ public class Spawner : MonoBehaviour
     private void Test_Spawn()
     {
         Spawn();
+    }
+
+    private void OnValidate()
+    {
+        _minMaxSpawnPeriods.x = Mathf.Max(MIN_SPAWN_PERIOD, _minMaxSpawnPeriods.x);
+        _minMaxSpawnPeriods.y = Mathf.Max(MIN_SPAWN_PERIOD, _minMaxSpawnPeriods.y);
     }
 
     private void Awake()
