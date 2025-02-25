@@ -76,7 +76,14 @@ public class DamageSource : MonoBehaviour
 
     private void DealDamage(Health health)
     {
-        health.Hurt(_damageAmount);
+        if (_damageAmount > 0)
+        {
+            health.Hurt(_damageAmount);
+        }
+        else
+        {
+            health.Heal(_damageAmount);
+        }
     }
 
     private void DealDamageOverTime()
