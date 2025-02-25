@@ -16,10 +16,8 @@ public class Destruction : MonoBehaviour
 
     private IEnumerator AutoDestructCoroutine()
     {
-        if (_targetHolder.Target == null)
+        if (_targetHolder.IsEmpty)
         {
-            Debug.LogWarning("No target provided.", this);
-
             yield break;
         }
 
@@ -30,6 +28,11 @@ public class Destruction : MonoBehaviour
 
     private void Awake()
     {
+        if (_targetHolder.IsEmpty)
+        {
+            Debug.LogWarning("No target provided.", this);
+        }
+
         if (_triggersOnAwake)
         {
             Trigger();

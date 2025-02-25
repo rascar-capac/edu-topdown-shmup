@@ -7,11 +7,6 @@ public class TargetFollowingWithAngle : MonoBehaviour
     [SerializeField] private float _height = 20f;
     [SerializeField] private float _pitchAngle = 60f;
 
-    public void SetTarget(Transform target)
-    {
-        _targetHolder.Target = target;
-    }
-
     private void UpdatePosition()
     {
         if (_targetHolder.Target == null)
@@ -31,7 +26,7 @@ public class TargetFollowingWithAngle : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_targetHolder.Target == null)
+        if (_targetHolder.IsEmpty)
         {
             Debug.LogWarning("No target provided.", this);
         }

@@ -12,6 +12,8 @@ public struct TargetHolder
 
     private Transform _actualTarget;
 
+    public readonly bool IsEmpty => _target == null && _tagList.Count == 0;
+
     public Transform Target
     {
         get
