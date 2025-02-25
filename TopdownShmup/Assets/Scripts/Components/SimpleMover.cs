@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SimpleMover : AMover
 {
-    [Tooltip("Optional")]
+    [Tooltip("Optional.")]
     [SerializeField] private Vector3 _velocity;
-    [Tooltip("Leave empty to directly move the transform")]
+    [Tooltip("Leave empty to directly move the transform.")]
     [SerializeField] private CharacterController _characterController;
 
     private void UpdateMovement()

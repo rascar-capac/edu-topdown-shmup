@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     private const float MIN_SPAWN_PERIOD = 0.05f;
 
+    [SerializeField] private bool _startsOnAwake;
+    [SerializeField] private Transform _container;
+    [Space]
     [Tooltip("The sum of probabilities should equal 1.")]
     [SerializeField] private List<SpawnProbabilityInfo> _prefabsToSpawn;
     [Tooltip("Normalized spawn period fluctuation. Keep this between 0 and 1 on both axes.")]
@@ -18,6 +22,7 @@ public class Spawner : MonoBehaviour
     [Tooltip("If this value is 100, then the end spawn period will be reached 100 seconds after the spawner has been started.")]
     [SerializeField] private float _timeSpanBetweenStartAndEndInSeconds = 120f;
     [Space]
+    [Tooltip("Please provide the corresponding properties below depending on the chosen strategy.")]
     [SerializeField] private EPositionStrategy _positionStrategy;
     [SerializeField] private List<Transform> _spawnPositions;
     [SerializeField] private Vector3 _minSpawnPosition;
@@ -26,17 +31,19 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Vector3 _circleCenter;
     [SerializeField] private float _circleRadius;
     [Space]
+    [Tooltip("Please provide the corresponding properties below depending on the chosen strategy.")]
     [SerializeField] private ERotationStrategy _rotationStrategy;
     [SerializeField] private Transform _targetedRotation;
     [SerializeField] private Vector3 _minSpawnRotation;
     [SerializeField] private Vector3 _maxSpawnRotation;
-    [Space]
-    [SerializeField] private Transform _container;
-    [SerializeField] private bool _startsOnAwake;
+
+    [SerializeField] private UnityEvent<GameObject> _onSpawned = new();
 
     private float _spawnTimer;
     private List<GameObject> _spawnedObjects = new();
     private float _startTime;
+
+    public UnityEvent<GameObject> OnSpawned => _onSpawned;
 
     public void StartSpawn(bool forceRestart = false)
     {
@@ -63,6 +70,8 @@ public class Spawner : MonoBehaviour
 
         GameObject spawnedObject = Instantiate(prefabToSpawn, GetSpawnPosition(), GetSpawnRotation(), _container);
         _spawnedObjects.Add(spawnedObject);
+
+        _onSpawned.Invoke(spawnedObject);
     }
 
     private void CheckSpawnTime()

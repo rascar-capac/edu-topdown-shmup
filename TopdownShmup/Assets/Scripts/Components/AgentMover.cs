@@ -7,10 +7,11 @@ public class AgentMover : AMover
     private const float MIN_DESTINATION_UPDATE_PERIOD = 0.01f;
 
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [Tooltip("Optional")]
+    [Tooltip("Optional.")]
     [SerializeField] private TargetHolder _targetHolder;
     [Tooltip("Leave at 0 to keep the agent speed.")]
     [SerializeField] private float _metersPerSecond = 5f;
+    [Tooltip("Period used to recompute the destination path.")]
     [SerializeField] private float _destinationUpdatePeriod = 0.1f;
 
     private float _updateTimer;

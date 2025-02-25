@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TopDownAimer : MonoBehaviour
 {
-    [Tooltip("Optional")]
+    [Tooltip("Optional.")]
     [SerializeField] private TargetHolder _targetHolder;
 
     public TargetHolder TargetHolder => _targetHolder;

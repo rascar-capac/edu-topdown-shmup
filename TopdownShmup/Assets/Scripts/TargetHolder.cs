@@ -5,9 +5,8 @@ using UnityEngine;
 [Serializable]
 public struct TargetHolder
 {
-    [Tooltip("The target defaults to this object's transform.")]
     [SerializeField] private Transform _target;
-    [Tooltip("If target is empty, this will be used to fetch a target (first one found). Leave empty to use the object's transform instead.")]
+    [Tooltip("If target is empty, this will be used to fetch a target (first one found).")]
     [SerializeField] private List<string> _tagList;
 
     private Transform _actualTarget;

@@ -7,10 +7,11 @@ public class DamageSource : MonoBehaviour
     private const float MIN_DAMAGE_PERIOD = 0.01f;
 
     [SerializeField] private float _damageAmount = 1f;
-    [SerializeField] private float _damagePeriod = 0f;
     [SerializeField] private List<string> _damageableTags;
     [Space]
+    [Tooltip("Enable to deal damage to object in the specified radius with the specified period.")]
     [SerializeField] private bool _dealsProximityDamage;
+    [SerializeField] private float _damagePeriod = 0f;
     [SerializeField] private float _damageRadius = 0;
 
     private Dictionary<Health, float> _damageTimerMap = new();

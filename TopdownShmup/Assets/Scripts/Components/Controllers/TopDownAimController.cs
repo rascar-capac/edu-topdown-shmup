@@ -44,8 +44,6 @@ public class TopDownAimController : MonoBehaviour
 
         if (_aimYOriginHolder.Target == null)
         {
-            Debug.LogWarning("No aim Y origin provided.", this);
-
             return;
         }
 
@@ -85,6 +83,11 @@ public class TopDownAimController : MonoBehaviour
         if (_aimer == null)
         {
             Debug.LogWarning("No aimer provided.", this);
+        }
+
+        if (_aimYOriginHolder.IsEmpty)
+        {
+            Debug.LogWarning("No aim Y origin provided.", this);
         }
 
         if (_aimAtInput == null && _aimTowardsInput == null)
