@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class TopDownAimController : MonoBehaviour
 {
-    [SerializeField] private Aimer _aimer;
+    [SerializeField] private TopDownAimer _aimer;
     [Tooltip("This is used to place the raycast plane on the Y axis. It will most likely be a gunpoint.")]
     [SerializeField] private TargetHolder _aimYOriginHolder;
     [SerializeField] private InputActionReference _aimAtInput;

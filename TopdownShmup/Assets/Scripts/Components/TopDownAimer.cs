@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Aimer : MonoBehaviour
+public class TopDownAimer : MonoBehaviour
 {
     [Tooltip("Optional")]
     [SerializeField] private TargetHolder _targetHolder;
@@ -21,6 +21,7 @@ public class Aimer : MonoBehaviour
         }
 
         Direction = (_targetHolder.Target.position - transform.position).normalized;
+        Direction = new Vector3(Direction.x, transform.position.y, Direction.z);
     }
 
     private void UpdateRotation()
